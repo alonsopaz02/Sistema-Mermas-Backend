@@ -25,12 +25,12 @@ public class ConsumoTanqueService {
     }
 
     // Crear o actualizar un consumo de tanque
-    public ConsumoTanque saveConsumo(ConsumoTanque consumoTanque) {
+    public ConsumoTanque save(ConsumoTanque consumoTanque) {
         return consumoTanqueRepository.save(consumoTanque);
     }
 
     // Eliminar un consumo de tanque
-    public void deleteConsumo(Long id) {
+    public void delete(Long id) {
         consumoTanqueRepository.deleteById(id);
     }
 }

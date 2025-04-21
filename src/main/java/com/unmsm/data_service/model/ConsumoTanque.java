@@ -2,7 +2,8 @@ package com.unmsm.data_service.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import java.util.Date;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "consumo_tanque")
@@ -13,9 +14,9 @@ public class ConsumoTanque {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tanque_id")
-    private Tanque tanque;  // Relación con la entidad Tanque
+    @ManyToOne
+    @JoinColumn(name = "tanque_id", referencedColumnName = "id")
+    private Tanque tanque;
 
     @Column(name = "volumen_consumido")
     private Double volumenConsumido;
@@ -23,12 +24,11 @@ public class ConsumoTanque {
     @Column(name = "volumen_60")
     private Double volumen60;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha")
-    private Date fecha;
+    private LocalDateTime fecha;  // Cambiado a LocalDateTime
 
     @Column(name = "motivo_consumo")
     private String motivoConsumo;
 
-    // Constructor, getters, setters, etc. son generados por Lombok
+    // Getters and Setters
 }
